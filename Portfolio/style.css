@@ -1,0 +1,163 @@
+/* ========== Base ========== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: #f8fafc; /* léger fond clair pour contraster avec la navbar */
+    color: #1e293b; /* gris foncé lisible */
+}
+
+/* ========== Navbar ========== */
+.navbar {
+    width: 220px;
+    background: #030056;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.navbar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.navbar a {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 0.6rem;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.navbar a:hover {
+    background: #3c3998;
+    color: #fff;
+}
+
+/* ========== Content ========== */
+.content {
+    flex: 1;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    overflow-y: auto;
+    margin-left: 220px; /* espace quand navbar visible */
+    transition: margin-left 0.3s ease;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.row img {
+    width: 220px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.row p {
+    flex: 1;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Alternate row */
+.row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Bouton toggle */
+.toggle-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    background: #030056;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s;
+}
+
+.toggle-btn:hover {
+    background: #3c3998;
+}
+
+/* Navbar cachée */
+.navbar {
+    position: fixed; /* reste collée à gauche, sort du flux */
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background: #030056;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 999; /* au-dessus du contenu */
+}
+
+.navbar.hidden {
+    transform: translateX(-100%);
+}
+
+.navbar.hidden ~ .content {
+    margin-left: 0; /* prend toute la largeur quand navbar cachée */
+}
+
+/* Section Hero avec vidéo plein écran */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* occupe toute la hauteur de l'écran */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Vidéo en arrière-plan plein écran */
+.background-video {
+    position: fixed; /* fixé derrière tout le site */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* couvre tout l’écran */
+    z-index: -1; /* passe derrière le contenu */
+}
+
+/* Overlay pour le texte */
+.hero-overlay {
+    position: relative;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4); /* effet assombrissant */
+    border-radius: 12px; /* tu peux l’enlever si tu veux pas de cadre autour du texte */
+}
+
+.hero-overlay h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
